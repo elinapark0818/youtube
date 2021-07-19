@@ -95,5 +95,5 @@ git checkout <브랜치>
 git checkout -b <새로운 브랜치>
 : 현재 브랜치에서 새로운 브랜치 생성하고 체크아웃하기
 
-git clone <저장소>
+git clone <remote>
 : 저장소 복제하기
