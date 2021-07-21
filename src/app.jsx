@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import './app.css';
 import VideoList from './components/video_list/videoList';
 
+// const apiKey = process.env.REACT_APP_API_KEY;
 
 function App() {
-  // const apiKey = process.env.REACT_APP_API_KEY;
   const [videos, setVideos] = useState([]);
   
   useEffect(() => {
