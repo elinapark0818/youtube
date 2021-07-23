@@ -1,8 +1,17 @@
-class YoutubeAxios {
-  constructor(httpClient) {
-    this.youtube = httpClient;
-  }
+import axios from 'axios';
 
+class YoutubeAxios {
+
+  constructor(key) {
+    this.youtube = axios.create({
+      baseURL: 'https://www.googleapis.com/youtube/v3',
+      params: { key: key },
+    });
+  }
+  // dependency injection
+  // constructor(httpClient) {
+  //   this.youtube = httpClient;
+  // }
   async mostPopular() {
     const response = await this.youtube.get('videos', {
       params: {
