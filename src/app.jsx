@@ -15,10 +15,12 @@ function App({ youtube }) {
   };
 
   const search = query => {
-    // 매개변수가 한 개인 경우, 소괄호를 생략할 수 있다.
+    setSelectedVideo(null);
     youtube
       .search(query)
-      .then(videos => setVideos(videos));
+      .then(videos => {
+        setVideos(videos);
+      }); 
   };  
   
   useEffect(() => {
