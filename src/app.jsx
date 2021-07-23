@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import styles from './app.module.css';
 import SearchHeader from './components/searchHeader/searchHeader';
 import VideoList from './components/video_list/videoList';
@@ -14,20 +14,19 @@ function App({ youtube }) {
     setSelectedVideo(video);
   };
 
-  const search = query => {
-    setSelectedVideo(null);
-    youtube
-      .search(query)
-      .then(videos => {
-        setVideos(videos);
-      }); 
-  };  
+  const search = useCallback(
+    query => {
+      setSelectedVideo(null);
+      youtube
+        .search(query) //
+        .then(videos => setVideos(videos));
+    },[youtube]);
   
   useEffect(() => {
     youtube
       .mostPopular()
       .then(videos => setVideos(videos));
-  }, []);
+  }, [youtube]);
 
 // effect를 실행하고 이를 정리(clean-up)하는 과정을 (마운트와 마운트 해제 시에)딱 한 번씩만 실행하고 싶다면, 빈 배열([])을 두 번째 인수로 넘기면 됩니다.
 // 빈 배열([])을 넘기게 되면, effect 안의 prop과 state는 초깃값을 유지하게 됩니다.
