@@ -3,6 +3,11 @@ import styles from './app.module.css';
 import SearchHeader from './components/searchHeader/searchHeader';
 import VideoList from './components/video_list/videoList';
 import VideoDetail from './components/video_detail/videoDetail';
+import Aside from './components/aside/aside';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+const element = <FontAwesomeIcon icon={faCoffee} />
 
 function App({ youtube }) {
   
@@ -35,6 +40,7 @@ function App({ youtube }) {
     <div className={styles.app}>
       <SearchHeader onSearch={search} />
       <section className={styles.content}>
+      <Aside />
         {selectedVideo && (
           <div className={styles.detail}>
             <VideoDetail video={selectedVideo} />
