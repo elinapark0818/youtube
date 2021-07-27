@@ -3,18 +3,17 @@ import styles from './app.module.css';
 import SearchHeader from './components/searchHeader/searchHeader';
 import VideoList from './components/video_list/videoList';
 import VideoDetail from './components/video_detail/videoDetail';
-import Aside from './components/aside/aside';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-
-const element = <FontAwesomeIcon icon={faCoffee} />
+import Channels from './components/channel_list/channels';
 
 function App({ youtube }) {
   
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
+  const [selectedChannel, setSelectedChannel] = useState([null]);
+
   const selectVideo = video => {
+    console.log('selectVideo!!!!!!!!!!!!!!!!!!!!')
     // 매개변수가 한 개인 경우, 소괄호를 생략할 수 있다.
     setSelectedVideo(video);
   };
@@ -24,7 +23,23 @@ function App({ youtube }) {
       setSelectedVideo(null);
       youtube
         .search(query) //
-        .then(videos => setVideos(videos));
+        .then(videos => {
+          console.log('!!!!!!!!!!')
+          console.log(videos)
+          setVideos(videos)
+      });
+    },[youtube]);
+
+  const selectChannel = useCallback(
+    channelId => {
+      setSelectedVideo(null);
+      youtube
+        .channels(channelId) //
+        .then(videos => {
+          console.log('!!!!channel!!!!!!')
+          console.log(videos)
+          setVideos(videos)
+      });
     },[youtube]);
   
   useEffect(() => {
@@ -39,8 +54,10 @@ function App({ youtube }) {
   return (
     <div className={styles.app}>
       <SearchHeader onSearch={search} />
+      <Channels 
+        onClickedChannel={selectChannel}
+        />
       <section className={styles.content}>
-      <Aside />
         {selectedVideo && (
           <div className={styles.detail}>
             <VideoDetail video={selectedVideo} />

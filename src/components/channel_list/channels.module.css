@@ -1,0 +1,46 @@
+.channelsBar {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.7808695652173914) 24%,
+    rgba(145, 138, 138, 0.21939198042498254) 86%
+  );
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.channels {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 0;
+}
+
+.channel {
+  text-align: center;
+  list-style: none;
+}
+
+.container {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding: 20px;
+  width: 70%;
+}
+
+.thumbnail {
+  width: 50%;
+  border-radius: 50%;
+}
+
+.title {
+  color: white;
+  font-size: small;
+  font-weight: bolder;
+  margin: auto;
+}

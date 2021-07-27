@@ -37,6 +37,21 @@ class Youtube {
     return response.data.items.map(item => ({ ...item, id: item.id.videoId }));
   }
 
+  async channels(channelId) {
+    console.log('async!!')
+    console.log(channelId)
+    const response = await this.youtube.get('search', {
+      params: {
+        part: 'snippet',
+        channelId,
+        type: 'video',
+        maxResults: 15,
+      },
+    });
+    console.log(response)
+    return response.data.items;
+  }
+
   // async Channels(channelId) {
   //   const response = await this.youtube.get('channels', {
   //     params: {
