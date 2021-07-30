@@ -13,7 +13,6 @@ function App({ youtube }) {
   const [selectedChannel, setSelectedChannel] = useState([null]);
 
   const selectVideo = video => {
-    console.log('selectVideo!!!!!!!!!!!!!!!!!!!!')
     // 매개변수가 한 개인 경우, 소괄호를 생략할 수 있다.
     setSelectedVideo(video);
   };
@@ -24,8 +23,6 @@ function App({ youtube }) {
       youtube
         .search(query) //
         .then(videos => {
-          console.log('!!!!!!!!!!')
-          console.log(videos)
           setVideos(videos)
       });
     },[youtube]);
@@ -36,8 +33,6 @@ function App({ youtube }) {
       youtube
         .channels(channelId) //
         .then(videos => {
-          console.log('!!!!channel!!!!!!')
-          console.log(videos)
           setVideos(videos)
       });
     },[youtube]);

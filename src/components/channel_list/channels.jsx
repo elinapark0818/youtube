@@ -3,7 +3,6 @@ import styles from './channels.module.css';
 
 const Channels = ({onClickedChannel}) => {
   
-    console.log('Channel Clicked!!!!')
 
   return (
     <section className={styles.channelsBar}>
